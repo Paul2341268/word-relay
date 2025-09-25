@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>끝말잇기 - 박정완</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/word-relay3.css" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="logo">끝말잇기</div>
+      <div class="meta">간단한 끝말잇기</div>
+    </header>
+
+    <main class="board-wrap">
+      <!-- 좌측: 사용된 단어들 + 알림 -->
+      <aside class="left-panel">
+        <section class="used-words">
+          <h3>사용된 단어</h3>
+          <ul id="used-list"><!-- JS로 항목 추가 --></ul>
+        </section>
+
+        <section class="message-box" id="message">
+          <!-- alert 대신에 메시지를 띄우고 싶으면 여기 업데이트 -->
+        </section>
+      </aside>
+
+      <!-- 중앙: 게임 보드 (제시어 + 입력) -->
+      <section class="main-board">
+        <div class="status-row">
+          <div class="turn-badge">
+            <span id="order">1</span>번째
+          </div>
+          <div class="current-player-name" id="player-name">
+            <!-- JS로 현재 플레이어 이름 표시 -->
+          </div>
+        </div>
+
+        <div class="word-card">
+          <div class="word-label">제시어</div>
+          <div id="word" class="word-big"></div>
+        </div>
+
+        <div class="input-row">
+          <input type="text" id="word-input" placeholder="단어를 입력하세요" />
+          <button id="submit-btn">입력</button>
+        </div>
+
+        <div class="hint">규칙: 마지막 글자 → 첫 글자. 이미 사용된 단어 입력 시 탈락</div>
+      </section>
+
+      <!-- 우측: 플레이어 리스트 -->
+      <aside class="right-panel">
+        <h3>플레이어</h3>
+        <ul class="players" id="players-list">
+          <!-- JS로 렌더됨 -->
+        </ul>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <small>Made by 박정완</small>
+    </footer>
+
+    <!-- 게임 로직 + UI 동기화 스크립트 -->
+    <script src="js/word-relay3.js"></script>
+  </body>
+</html>
