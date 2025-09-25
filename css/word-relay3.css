@@ -1,0 +1,198 @@
+/* =========================
+   기본 리셋 & 폰트
+   ========================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: 'Noto Sans KR', system-ui, Arial, sans-serif; background:#f2f6f7; color:#222; }
+
+/* =========================
+   상단 바 (타이틀)
+   ========================= */
+.topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  padding:16px 24px;
+  background: linear-gradient(90deg,#2e8b57, #1f7a4c);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+.topbar .logo { font-weight:700; font-size:1.05rem; }
+.topbar .meta { font-size:0.9rem; opacity:0.9; }
+
+/* =========================
+   메인 레이아웃 (좌-중-우)
+   ========================= */
+.board-wrap {
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  gap: 18px;
+  padding: 22px;
+  max-width: 1100px;
+  margin: 26px auto;
+}
+
+/* 좌측/우측 패널 공통 */
+.left-panel, .right-panel {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 14px;
+  min-height: 320px;
+  box-shadow: 0 4px 12px rgba(18, 40, 25, 0.04);
+}
+
+/* 사용된 단어 리스트 (좌측) */
+.used-words h3 { font-size: 1rem; margin-bottom:8px; color:#333; }
+#used-list { list-style:none; display:flex; flex-direction:column; gap:6px; max-height: 420px; overflow:auto; padding-right:6px; }
+#used-list li {
+  padding:8px 10px;
+  background: linear-gradient(180deg,#fff,#f7f7f7);
+  border-radius:6px;
+  font-weight:600;
+  color:#2b2b2b;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  font-size:0.95rem;
+}
+
+/* 메시지 박스 */
+.message-box { margin-top:12px; font-size:0.92rem; color:#666; }
+
+/* 중앙 보드 (제시어 + 입력) */
+.main-board {
+  background: linear-gradient(180deg, #effaf2, #e8fbf0);
+  border-radius: 14px;
+  padding: 20px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:center;
+  min-height:360px;
+  box-shadow: 0 8px 20px rgba(16,80,40,0.06);
+}
+
+.status-row {
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.turn-badge {
+  background: rgba(255,255,255,0.85);
+  padding:8px 10px;
+  border-radius: 999px;
+  font-weight:700;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.current-player-name { font-weight:700; color:#225; }
+
+/* 큰 카드 스타일의 제시어 */
+.word-card {
+  width:100%;
+  max-width:720px;
+  background: linear-gradient(180deg,#ffffff,#f0fff5);
+  border-radius: 12px;
+  padding: 22px;
+  text-align:center;
+  box-shadow: 0 6px 16px rgba(10,60,30,0.06);
+}
+.word-label { font-size:0.95rem; color:#666; margin-bottom:8px; }
+.word-big {
+  font-size: 2.6rem;
+  font-weight:800;
+  color:#0b6b3a;
+  letter-spacing: 2px;
+  min-height: 56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* 입력영역 */
+.input-row {
+  display:flex;
+  gap:10px;
+  width:100%;
+  max-width:640px;
+  align-items:center;
+}
+.input-row input[type="text"] {
+  flex:1;
+  padding:12px 14px;
+  border-radius:10px;
+  border: 1px solid #d7eade;
+  font-size:1rem;
+  outline:none;
+  background:#fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02) inset;
+}
+.input-row input[type="text"]:focus {
+  border-color:#89d3a3;
+  box-shadow: 0 0 0 4px rgba(137,211,163,0.12);
+}
+.input-row button {
+  background: linear-gradient(180deg,#38b06a,#0e8a4a);
+  color:#fff;
+  border:none;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 6px 14px rgba(13,86,45,0.18);
+}
+.input-row button:active { transform: translateY(1px); }
+
+/* 규칙 힌트 */
+.hint { font-size:0.88rem; color:#5a6; opacity:0.9; }
+
+/* 플레이어 리스트 (우측) */
+.right-panel h3 { margin-bottom:8px; color:#333; }
+.players { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.player {
+  padding:10px 12px;
+  border-radius:10px;
+  background:linear-gradient(180deg,#fff,#f7f9f8);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  color:#233;
+  border:1px solid rgba(0,0,0,0.03);
+  transition: all 180ms ease;
+}
+.player .avatar {
+  width:34px; height:34px; border-radius:50%;
+  background:linear-gradient(180deg,#ffd66b,#ffc65b);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-weight:800; color:#6b3b00;
+}
+.player.active {
+  box-shadow: 0 6px 16px rgba(11, 99, 48, 0.08);
+  border: 1px solid rgba(30,120,60,0.12);
+}
+
+/* ========== 변경요청 반영: 탈락 시 '비활성 표시' ========== */
+/* 탈락(비활성) 플레이어를 제거하지 않고, 반투명 + 줄긋기 처리 */
+.player.inactive {
+  opacity: 0.45;
+  text-decoration: line-through;
+  filter: grayscale(40%); /* 약간 흑백 느낌 추가 */
+  pointer-events: none;    /* 클릭 방지 (선택) */
+}
+
+/* 현재 차례 강조 (별도 클래스) */
+.player.active-current {
+  outline: 3px solid rgba(60,170,95,0.14);
+  transform: translateY(-4px);
+}
+
+/* =========================
+   바닥글
+   ========================= */
+.footer { text-align:center; padding:18px 8px; color:#7a8; font-size:0.88rem; }
+
+/* 반응형 */
+@media (max-width: 920px) {
+  .board-wrap { grid-template-columns: 1fr; padding:12px; }
+  .left-panel, .right-panel { order: 3; }
+  .main-board { order: 2; }
+}
